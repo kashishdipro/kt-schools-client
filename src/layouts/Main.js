@@ -4,7 +4,7 @@ import NavBar from '../shared/NavBar/NavBar';
 
 const Main = () => {
     return (
-        <div className='bg-sky-50 w-full h-screen'>
+        <div className='bg-cyan-50 w-full h-screen'>
             <NavBar/>
             <div className='grid'>
                 <div className='w-4/12'>
