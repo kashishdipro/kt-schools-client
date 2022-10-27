@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import banner from '../../img/banner.png'
 import { FaAngleRight } from "react-icons/fa";
 
 const Home = () => {
-    const [courses, setCourses] = useState([]);
-
-    useEffect(() =>{
-        fetch('http://localhost:5000/courses')
-        .then(res => res.json())
-        .then(data => setCourses(data))
-    },[])
+    const courses = useLoaderData();
     return (
         <section className='bg-zinc-50 w-full h-screen text-zinc-100'>
             <div className='md:flex items-center justify-around bg-teal-800 '>
@@ -28,9 +22,8 @@ const Home = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 content-center gap-4 md:px-16 px-4 py-5'>
                 {
                     courses.map(course =>
-                        <div className='bg-slate-600 rounded-lg'>
-                            <img className='rounded-lg p-2' src={course.image} alt="" />
-                            <div className='text-center mt-2 p-2'>
+                        <div key={course.id} className='bg-slate-600 rounded-lg'>
+                            <div className='text-center my-2 p-2'>
                                 <p className='text-2xl font-bold'>{course.name}</p>
                                 <p className='text-xl font-semibold'>{course.description}</p>
                                 <Link to={`/course/${course.id}`} className='flex justify-center items-center  mt-2 p-2 rounded-lg text-white font-semibold bg-sky-600'>

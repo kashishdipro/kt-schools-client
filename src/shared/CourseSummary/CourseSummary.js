@@ -1,17 +1,12 @@
-import { useLoaderData } from 'react-router-dom';
-import CourseSummary from '../../shared/CourseSummary/CourseSummary';
+import React from 'react';
+import { GiBulletBill } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 
-const Course = () => {
-    const courses = useLoaderData();
+const CourseSummary = ({course}) => {
+    const { name, image, description, keys, course_id} = course;
     return (
-        <section className='text-zinc-100'>
-            {
-                courses.map(course => <CourseSummary
-                    key={course.id}
-                    course={course}
-                ></CourseSummary>)
-            }
-            {/* <div className="card lg:card-side bg-slate-600 shadow-xl">
+        <div className='m-4'>
+            <div className="card lg:card-side bg-slate-600 shadow-xl">
                 <div className="avatar">
                     <div className="w-80 rounded">
                         <img src={image} alt={name}/>
@@ -28,13 +23,13 @@ const Course = () => {
                             ><GiBulletBill className='mr-2'/> {key}</li>)
                         }
                     </ul>
-                    <Link to={`/course/${course.id}`} className="card-actions justify-end">
+                    <Link to={`/course/${course_id}`} className="card-actions justify-end">
                         <button className="btn bg-sky-600">Get premium access</button>
                     </Link>
                 </div>
-            </div> */}
-        </section>
+            </div>
+        </div>
     );
 };
 
-export default Course;
+export default CourseSummary;
