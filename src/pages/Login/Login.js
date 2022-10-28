@@ -8,8 +8,6 @@ const Login = () => {
     const {logIn} = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -27,7 +25,7 @@ const Login = () => {
             const user = result.user;
             form.reset();
             setError('');
-            navigate(from, {replace: true});
+            navigate('/');
         })
         .catch(error => {
             setError(error.message);
