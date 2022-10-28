@@ -7,6 +7,7 @@ import FAQ from "../pages/FAQ/FAQ";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 
 export const routes = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/course/:id',
                 loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`),
-                element: <Course/>
+                element: <ProtectedRoutes><Course/></ProtectedRoutes>
             },
             {
                 path: '/faq',
