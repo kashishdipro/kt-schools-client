@@ -7,6 +7,7 @@ import FAQ from "../pages/FAQ/FAQ";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 
 export const routes = createBrowserRouter([
@@ -44,6 +45,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register/>
+            },
+            {
+                path: '/termsandconditions',
+                element: <TermsAndConditions/>
             }
         ]
     }

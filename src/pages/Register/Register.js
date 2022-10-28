@@ -110,7 +110,11 @@ const Register = () => {
                                 </Link>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
+                            <div>
+                                <input type="checkbox" className="border border-gray-400 mr-2"/>
+                                <span>I accept the <Link to='/termsandconditions' className="font-medium">Terms of Use & Privacy Policy</Link></span>
+                            </div>
+                            <div className="form-control mt-4">
                                 <button className="btn btn-md bg-sky-600">Register</button>
                             </div>
                             <p className="text-lg text-red-500 font-medium">{error}</p>
