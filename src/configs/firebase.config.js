@@ -4,13 +4,13 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCsdMume4eoxuXpSL77XnOTeSV8qpyNlPs",
-  authDomain: "kt-schools.firebaseapp.com",
-  projectId: "kt-schools",
-  storageBucket: "kt-schools.appspot.com",
-  messagingSenderId: "871012960674",
-  appId: "1:871012960674:web:127fbc9266b97bfd6e0afb"
+const firebaseConfig ={
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
