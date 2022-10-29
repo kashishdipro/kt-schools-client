@@ -6,6 +6,7 @@ import Courses from "../pages/Courses/Courses";
 import FAQ from "../pages/FAQ/FAQ";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import NotFound from "../pages/NotFound/NotFound";
 import Register from "../pages/Register/Register";
 import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
@@ -49,6 +50,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/termsandconditions',
                 element: <TermsAndConditions/>
+            },
+            {
+                path: '*',
+                element: <NotFound></NotFound>
             }
         ]
     }
