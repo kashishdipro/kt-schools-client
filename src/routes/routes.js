@@ -18,17 +18,17 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://kt-schools-server.vercel.app/courses'),
                 element: <Home/>
             },
             {
                 path: '/courses',
-                loader: () => fetch('http://localhost:5000/course'),
+                loader: () => fetch('https://kt-schools-server.vercel.app/course'),
                 element: <Courses/>
             },
             {
                 path: '/course/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+                loader: ({params}) => fetch(`https://kt-schools-server.vercel.app/course/${params.id}`),
                 element: <ProtectedRoutes><Course/></ProtectedRoutes>
             },
             {
