@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from "../../contexts/UserContext";
 
 const Register = () => {
-    const {createUser, updateUserProfile, verifyEmail, signInWithGoogle} = useContext(AuthContext);
+    const {createUser, updateUserProfile, signInWithGoogle, signInWithGithub} = useContext(AuthContext);
 
     const [error, setError] = useState('');
     const [accepted, setAccepted] = useState(false);
     
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,7 +35,6 @@ const Register = () => {
             setError('');
             form.reset();
             handleUpdateProfile(displayName, photoURL);
-            handleEmailVerification();
             toast.success('Please verify your email address.')
         })
         .catch(error =>{
@@ -68,10 +68,13 @@ const Register = () => {
         })
     }
 
-    const handleEmailVerification = () =>{
-        verifyEmail()
-        .then(() =>{})
-        .catch(error=>{
+    const handleGithubSignIn = () =>{
+        signInWithGithub(githubProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error =>{
             setError(error);
             console.error(error);
         })
@@ -157,7 +160,7 @@ const Register = () => {
                         </div>
                         <div className='flex justify-around mb-8'>
                             <button onClick={handleGoogleSignIn} className="btn btn-outline btn-success text-xl"><FaGoogle/></button>
-                            <button className="btn btn-outline btn-error text-xl"><FaGithub/></button>
+                            <button onClick={handleGithubSignIn} className="btn btn-outline btn-error text-xl"><FaGithub/></button>
                         </div>
                     </div>
                 </div>
