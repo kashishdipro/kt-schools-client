@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import ReactToPrint from 'react-to-print';
 import { GiBulletBill } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 const CourseSummary = ({course}) => {
     const { name, image, description, keys, course_id} = course;
+    const ref = useRef();
     return (
         <div className='m-4'>
-            <div className="card lg:card-side bg-slate-600 shadow-xl">
+            <div ref={ref} className="card lg:card-side bg-slate-600 shadow-xl">
                 <div className="avatar">
                     <div className="w-80 rounded">
                         <img src={image} alt={name}/>
@@ -28,6 +30,7 @@ const CourseSummary = ({course}) => {
                     </Link>
                 </div>
             </div>
+            <ReactToPrint trigger={() =><button className="btn my-2 bg-sky-600">Download PDF</button>} content={() => ref.current}/>
         </div>
     );
 };
